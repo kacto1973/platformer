@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://xsvg6pj6s5j4"]
+
+[node name="GameOver" type="Node2D" unique_id=1903595708]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=882788278]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=211134920]
+offset_right = 40.0
+offset_bottom = 40.0
