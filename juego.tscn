@@ -677,7 +677,8 @@ script = ExtResource("2_n74ki")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(500, -180)
-offset = Vector2(-250, 50)
+offset = Vector2(-350, 150)
+zoom = Vector2(1.5, 1.5)
 
 [node name="AgentAnimator" type="Node2D" parent="CharacterBody2D"]
 
