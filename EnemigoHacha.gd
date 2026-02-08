@@ -17,11 +17,10 @@ var vida: int = 3  # Vida del enemigo
 var escena_ataque = preload("res://Ataque.tscn")
 
 func _ready():
-	# Configurar timer
 	timer_ataque.wait_time = tiempo_entre_ataques
 	timer_ataque.start()
-	
-	# Conectar señales (si usas Area2D para detección)
+	timer_ataque.timeout.connect(_atacar)
+
 	if area_deteccion:
 		area_deteccion.body_entered.connect(_ver_jugador)
 		area_deteccion.body_exited.connect(_perder_jugador)

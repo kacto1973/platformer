@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://taw8t140f10k"]
+
+[ext_resource type="Script" uid="uid://dfaelcccqknxj" path="res://ataque.gd" id="1_c3jr2"]
+[ext_resource type="Texture2D" uid="uid://b22yns74dyorx" path="res://imagenes/hacha.png" id="2_cd2ac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmlt0"]
+size = Vector2(15, 28)
+
+[node name="Ataque" type="Node2D"]
+script = ExtResource("1_c3jr2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_rmlt0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cd2ac")

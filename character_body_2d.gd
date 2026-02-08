@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -600.0
 var esta_vivo = true
 
 func _ready():
-	$AnimationPlayer.play("idle")
+	$AgentAnimator/AnimationPlayer.play("idle")
 
 func _physics_process(delta):
 	# Si está muerto, no procesar movimiento
@@ -30,11 +30,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	if Input.is_action_just_pressed("ui_left"):
-		$Jugador.flip_h = true
-		$AnimationPlayer.play("caminando")
+		$AgentAnimator/Jugador.flip_h = true
+		$AgentAnimator/AnimationPlayer.play("caminando")
 	if Input.is_action_just_pressed("ui_right"):
-		$Jugador.flip_h = false
-		$AnimationPlayer.play("caminando")
+		$AgentAnimator/Jugador.flip_h = false
+		$AgentAnimator/AnimationPlayer.play("caminando")
 	
 	move_and_slide()
 	
@@ -60,7 +60,7 @@ func morir_por_caida():
 		$CollisionShape2D.disabled = true
 	
 	# 3. Detener animaciones
-	$AnimationPlayer.stop()
+	$AgentAnimator/AnimationPlayer.stop()
 	
 	# 4. Mostrar mensaje en consola
 	print("💀 ¡Jugador murió por caída! Posición Y: ", global_position.y)
