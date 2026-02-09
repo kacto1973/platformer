@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bk7sfpx8tvqtc"]
+[gd_scene load_steps=47 format=4 uid="uid://bk7sfpx8tvqtc"]
 
 [ext_resource type="Texture2D" uid="uid://c4fw823p8fxjb" path="res://sprites/personaje.png" id="1_g3dr0"]
 [ext_resource type="Texture2D" uid="uid://ds78xwpwqbh5h" path="res://sprites/Assets.png" id="1_gvuhb"]
@@ -524,13 +524,68 @@ radius = 7.0
 
 [sub_resource type="Curve2D" id="Curve2D_ipdbw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -5, 19, 0, 0, 0, 0, -207, 20, 0, 0, 0, 0, 11, 20, 0, 0, 0, 0, 39, 21, 0, 0, 0, 0, 37, 20, 0, 0, 0, 0, -4, 19)
+"points": PackedVector2Array(0, 0, 0, 0, -5, 19, 0, 0, 0, 0, -353, 20, 0, 0, 0, 0, 11, 20, 0, 0, 0, 0, 39, 21, 0, 0, 0, 0, 37, 20, 0, 0, 0, 0, -4, 19)
 }
 point_count = 6
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ipdbw"]
 radius = 12.0
 height = 34.0
+
+[sub_resource type="Animation" id="Animation_owdwa"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AgentAnimatorEnemy/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 34, 50), Rect2(34, 0, 34, 50), Rect2(68, 0, 34, 50), Rect2(102, 0, 34, 50), Rect2(0, 0, 34, 50), Rect2(0, 0, 34, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_ycwqe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AgentAnimatorEnemy/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 34, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_t4mpn"]
+resource_name = "caminando"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AgentAnimatorEnemy/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(34, 50, 34, 50), Rect2(68, 50, 34, 50), Rect2(102, 50, 34, 50), Rect2(136, 50, 34, 50), Rect2(170, 50, 34, 50), Rect2(0, 50, 34, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t4mpn"]
+_data = {
+&"RESET": SubResource("Animation_ycwqe"),
+&"caminando": SubResource("Animation_t4mpn"),
+&"idle": SubResource("Animation_owdwa")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icdfu"]
 atlas = ExtResource("6_cpk6b")
@@ -691,8 +746,8 @@ script = ExtResource("2_n74ki")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(500, -180)
-offset = Vector2(-350, 150)
-zoom = Vector2(1.5, 1.5)
+offset = Vector2(-475, 175)
+zoom = Vector2(1.75, 1.75)
 
 [node name="AgentAnimator" type="Node2D" parent="CharacterBody2D"]
 
@@ -736,6 +791,9 @@ shape = SubResource("CapsuleShape2D_ipdbw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/Enemigo/AgentAnimatorEnemy"]
 root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_t4mpn")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Enemigo/AgentAnimatorEnemy"]
 texture = ExtResource("4_ipdbw")
