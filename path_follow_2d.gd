@@ -5,7 +5,7 @@ var ultima_posicion: float = 0.0
 func _process(delta):
 	progress_ratio += velocidad * delta
 	if position.x < ultima_posicion:
-		$Enemigo/Sprite2D.flip_h = true #mueve a la izquierda
+		$Enemigo/AgentAnimatorEnemy/Sprite2D.flip_h = true #mueve a la izquierda
 	elif position.x > ultima_posicion:
-		$Enemigo/Sprite2D.flip_h = false #mueve a la derecha
+		$Enemigo/AgentAnimatorEnemy/Sprite2D.flip_h = false #mueve a la derecha
 	ultima_posicion = position.x

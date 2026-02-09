@@ -93,7 +93,6 @@ texture = ExtResource("1_gvuhb")
 9:2/0 = 0
 10:2/0 = 0
 11:2/0 = 0
-11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:2/0 = 0
 12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:2/0 = 0
@@ -525,13 +524,13 @@ radius = 7.0
 
 [sub_resource type="Curve2D" id="Curve2D_ipdbw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -6, 1, 0, 0, 0, 0, -246, 7, 0, 0, 0, 0, 15, 15, 0, 0, 0, 0, -5, 1, 0, 0, 0, 0, -6, 1)
+"points": PackedVector2Array(0, 0, 0, 0, -5, 19, 0, 0, 0, 0, -207, 20, 0, 0, 0, 0, 11, 20, 0, 0, 0, 0, 39, 21, 0, 0, 0, 0, 37, 20, 0, 0, 0, 0, -4, 19)
 }
-point_count = 5
+point_count = 6
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ipdbw"]
-radius = 23.0
-height = 66.0
+radius = 12.0
+height = 34.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icdfu"]
 atlas = ExtResource("6_cpk6b")
@@ -717,7 +716,7 @@ position = Vector2(795, 590)
 curve = SubResource("Curve2D_ipdbw")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-6, 1)
+position = Vector2(-5, 19)
 rotation = 3.116598
 rotates = false
 script = ExtResource("6_6v0qg")
@@ -729,17 +728,19 @@ scale = Vector2(0.9999999, 0.9999999)
 collision_layer = 4
 collision_mask = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Enemigo"]
-scale = Vector2(2, 2)
-texture = ExtResource("4_ipdbw")
-flip_h = true
-hframes = 6
-vframes = 2
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Enemigo"]
+position = Vector2(2, 3.7252907e-09)
 shape = SubResource("CapsuleShape2D_ipdbw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/Enemigo"]
+[node name="AgentAnimatorEnemy" type="Node2D" parent="Path2D/PathFollow2D/Enemigo"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/Enemigo/AgentAnimatorEnemy"]
+root_node = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Enemigo/AgentAnimatorEnemy"]
+texture = ExtResource("4_ipdbw")
+region_enabled = true
+region_rect = Rect2(0, 0, 34, 50)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(460, 590)

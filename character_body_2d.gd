@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 150.0
 const JUMP_VELOCITY = -600.0
 
 # Variable para controlar si está vivo
