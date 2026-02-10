@@ -442,9 +442,6 @@ terrain_set_0/terrain_0/name = "Rocas"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_n74ki")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gvuhb"]
-radius = 7.0
-
 [sub_resource type="Animation" id="Animation_ybvdj"]
 resource_name = "idle"
 length = 1.5
@@ -520,6 +517,9 @@ _data = {
 &"idle": SubResource("Animation_ybvdj"),
 &"morir": SubResource("Animation_v5wy4")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gvuhb"]
+radius = 7.0
 
 [sub_resource type="Curve2D" id="Curve2D_ipdbw"]
 _data = {
@@ -651,18 +651,14 @@ tile_set = SubResource("TileSet_g3dr0")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["jugador"]]
 position = Vector2(50, 580)
-collision_layer = 3
-collision_mask = 5
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("2_n74ki")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(500, -180)
 offset = Vector2(-475, 175)
 zoom = Vector2(1.75, 1.75)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_gvuhb")
 
 [node name="AgentAnimator" type="Node2D" parent="CharacterBody2D"]
 
@@ -675,6 +671,11 @@ region_rect = Rect2(0, 0, 40, 43)
 libraries = {
 &"": SubResource("AnimationLibrary_b1hvq")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_gvuhb")
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(795, 590)
@@ -692,7 +693,8 @@ tiempo_ataque = 1.0
 position = Vector2(-6.0231323, 0.84973145)
 rotation = -3.116598
 scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 2
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Enemigo"]
 position = Vector2(2, 3.7252907e-09)

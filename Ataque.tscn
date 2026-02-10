@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://b22yns74dyorx" path="res://imagenes/hacha.png" id="2_cd2ac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmlt0"]
-size = Vector2(15, 28)
+size = Vector2(9.5, 23)
 
-[node name="Ataque" type="Node2D"]
+[node name="Ataque" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_c3jr2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(0.25, -0.5)
 shape = SubResource("RectangleShape2D_rmlt0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
